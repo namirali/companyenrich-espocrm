@@ -9,3 +9,6 @@
 /vendor
 /.phpunit.result.cache
 /composer.phar
+
+/site
+/.phpunit.cache/

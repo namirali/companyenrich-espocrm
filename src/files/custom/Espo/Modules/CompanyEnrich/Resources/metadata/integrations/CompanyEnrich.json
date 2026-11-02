@@ -1,0 +1,15 @@
+{
+    "fields": {
+        "apiKey": {
+            "type": "password",
+            "maxLength": 512,
+            "required": false
+        },
+        "clearApiKey": {
+            "type": "bool",
+            "default": false
+        }
+    },
+    "allowUserAccounts": false,
+    "view": "views/admin/integrations/edit"
+}
