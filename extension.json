@@ -1,0 +1,14 @@
+{
+    "module": "CompanyEnrich",
+    "name": "CompanyEnrich",
+    "description": "Company and professional-profile research with CompanyEnrich.",
+    "author": "CompanyEnrich",
+    "bundled": true,
+    "acceptableVersions": [
+        ">=9.3.0"
+    ],
+    "php": [
+        ">=8.3"
+    ],
+    "scripts": []
+}

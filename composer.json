@@ -1,0 +1,17 @@
+{
+    "name": "companyenrich/espocrm",
+    "require": {
+        "php": ">=8.3"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Espo\\Modules\\CompanyEnrich\\": "src/files/custom/Espo/Modules/CompanyEnrich",
+            "tests\\unit\\Espo\\Modules\\CompanyEnrich\\": "tests/unit/Espo/Modules/CompanyEnrich"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5",
+        "phpstan/phpstan": "^2.1"
+    },
+    "license": "AGPL-3.0-or-later"
+}
