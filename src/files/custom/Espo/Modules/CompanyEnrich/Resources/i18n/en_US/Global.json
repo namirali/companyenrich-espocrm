@@ -1,0 +1,12 @@
+{
+    "scopeNames": {
+        "CompanyEnrich": "CompanyEnrich"
+    },
+    "scopeNamesPlural": {
+        "CompanyEnrich": "CompanyEnrich"
+    },
+    "labels": {
+        "CompanyEnrich": "CompanyEnrich research",
+        "CompanyEnrichFill": "CompanyEnrich: fill empty fields"
+    }
+}

@@ -1,1 +1,12 @@
-[]
+[
+    {
+        "route": "/CompanyEnrich/research",
+        "method": "post",
+        "actionClassName": "Espo\\Modules\\CompanyEnrich\\Api\\Research"
+    },
+    {
+        "route": "/CompanyEnrich/enrich-record",
+        "method": "post",
+        "actionClassName": "Espo\\Modules\\CompanyEnrich\\Api\\EnrichRecord"
+    }
+]
