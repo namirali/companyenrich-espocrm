@@ -1,0 +1,53 @@
+name: Validate extension
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  php:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['8.3', '8.4', '8.5']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: espocrm/espocrm
+          ref: stable
+          path: site
+          sparse-checkout: |
+            application/
+            custom/
+            dev/
+            bootstrap.php
+            composer.json
+            composer.lock
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer:v2
+          extensions: curl, gd, mbstring, zip, xml, exif, pdo_mysql
+          ini-values: memory_limit=1024M
+      - run: composer install --no-dev --no-interaction --prefer-dist
+        working-directory: site
+      - run: composer install --no-interaction --prefer-dist
+      - run: vendor/bin/phpunit
+      - run: vendor/bin/phpstan analyse --no-progress
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run test:frontend
+      - run: npm run extension
+      - uses: actions/upload-artifact@v4
+        with:
+          name: companyenrich-extension
+          path: build/company-enrich-*.zip
