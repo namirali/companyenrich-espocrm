@@ -8,7 +8,7 @@ Use it to qualify accounts, research people at target companies, find similar bu
 
 Requires EspoCRM 10.x and PHP 8.3+. No additional PHP library is installed in your CRM.
 
-1. Build the ZIP with Node.js 24+ using `npm ci` and `npm run extension`, or, after CI is activated, download the ZIP artifact from a successful repository Actions run.
+1. Build the ZIP with Node.js 24+ using `npm ci` and `npm run extension`, or download the ZIP artifact from a successful repository Actions run.
 2. As an administrator, open **Administration → Extensions**, upload `build/company-enrich-0.1.0.zip`, and install it. The supported CLI alternative is `php command.php extension --file=/path/to/company-enrich-0.1.0.zip`.
 3. Open **Administration → Integrations → CompanyEnrich**. Enter your API key and enable the integration. The key is encrypted with EspoCRM's `Crypt` service and masked by its native integration settings. Leave the key blank to preserve it; **Remove stored API key** clears it and disables the integration.
 4. Grant **CompanyEnrich** access to the appropriate user roles. Portal users are excluded. The extension adds a CompanyEnrich navigation tab; refresh the browser after installation.
@@ -83,7 +83,7 @@ vendor/bin/phpstan analyse --no-progress
 npm run extension
 ```
 
-Unit tests use synthetic data and mock the HTTP boundary; they make no CompanyEnrich API calls. The prepared CI definition checks PHP 8.3, 8.4, and 8.5 against EspoCRM's stable source and builds a downloadable extension ZIP. It is stored at `ci/validate.yml` and is not active yet: the publishing credential does not have GitHub's `workflow` permission. A repository owner can activate it by copying that file to `.github/workflows/validate.yml` through GitHub's editor or a credential with workflow permission. No broader permissions are needed to use or build the extension. The source request schemas were checked against CompanyEnrich's public OpenAPI on 2026-11-02.
+Unit tests use synthetic data and mock the HTTP boundary; they make no CompanyEnrich API calls. The GitHub Actions workflow at `.github/workflows/validate.yml` checks PHP 8.3, 8.4, and 8.5 against EspoCRM's stable source and builds a downloadable extension ZIP. It runs on pull requests and pushes to `main`, with read-only repository permissions and no CompanyEnrich credentials. The source request schemas were checked against CompanyEnrich's public OpenAPI on 2026-11-02.
 
 Local validation: PHP 8.4.27, 47 PHP tests/213 assertions and 3 frontend regression tests, PHPStan level 8, and the official extension package build passed. The ZIP was installed into a disposable EspoCRM 10.0.11 server; authenticated smoke checks verified native Crypt encryption/decryption, blank-key preservation and removal, key masking, validation, disabled integration behavior, no-op record updates, anonymous rejection, and role denial. No real provider credentials or paid API calls were used. A production workspace and paid response path have not been tested.
 
