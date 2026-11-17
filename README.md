@@ -83,7 +83,7 @@ vendor/bin/phpstan analyse --no-progress
 npm run extension
 ```
 
-Unit tests use synthetic data and mock the HTTP boundary; they make no CompanyEnrich API calls. The GitHub Actions workflow at `.github/workflows/validate.yml` checks PHP 8.3, 8.4, and 8.5 against EspoCRM's stable source and builds a downloadable extension ZIP. It runs on pull requests and pushes to `main`, with read-only repository permissions and no CompanyEnrich credentials. The source request schemas were checked against CompanyEnrich's public OpenAPI on 2026-11-02.
+Unit tests use synthetic data and mock the HTTP boundary; they make no CompanyEnrich API calls. The GitHub Actions workflow at `.github/workflows/validate.yml` checks PHP 8.3, 8.4, and 8.5 against EspoCRM's stable source and builds a downloadable extension ZIP. It runs on pull requests and pushes to `main`, with read-only repository permissions and no CompanyEnrich credentials. The source request schemas were checked against CompanyEnrich's public OpenAPI on 2026-11-17.
 
 Local validation: PHP 8.4.27, 47 PHP tests/213 assertions and 3 frontend regression tests, PHPStan level 8, and the official extension package build passed. The ZIP was installed into a disposable EspoCRM 10.0.11 server; authenticated smoke checks verified native Crypt encryption/decryption, blank-key preservation and removal, key masking, validation, disabled integration behavior, no-op record updates, anonymous rejection, and role denial. No real provider credentials or paid API calls were used. A production workspace and paid response path have not been tested.
 

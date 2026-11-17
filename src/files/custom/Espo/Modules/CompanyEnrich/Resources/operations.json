@@ -1087,7 +1087,8 @@
           "media",
           "service-provider",
           "mobile",
-          "saas"
+          "saas",
+          "local-business"
         ]
       },
       "CompanyEmployees": {
