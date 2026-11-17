@@ -1,0 +1,18 @@
+{
+    "menu": {
+        "detail": {
+            "buttons": [
+                "__APPEND__",
+                {
+                    "name": "companyEnrichFill",
+                    "label": "CompanyEnrichFill",
+                    "style": "default",
+                    "acl": "edit",
+                    "handler": "company-enrich:handlers/enrich-record",
+                    "actionFunction": "run",
+                    "checkVisibilityFunction": "isVisible"
+                }
+            ]
+        }
+    }
+}

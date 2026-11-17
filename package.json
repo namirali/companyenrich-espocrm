@@ -1,6 +1,6 @@
 {
   "name": "companyenrich-espocrm",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "scripts": {
     "sa": "vendor/bin/phpstan",
@@ -13,7 +13,8 @@
     "clear-cache": "php site/clear_cache.php",
     "rebuild": "node build --rebuild",
     "all": "node build --all",
-    "prepare-test": "node build --prepare-test"
+    "prepare-test": "node build --prepare-test",
+    "test:frontend": "node --test tests/frontend/*.test.mjs"
   },
   "type": "module",
   "author": "CompanyEnrich",
@@ -25,5 +26,8 @@
     "npm": ">=8",
     "node": ">=18"
   },
-  "license": "AGPL-3.0-or-later"
+  "license": "AGPL-3.0-or-later",
+  "overrides": {
+    "adm-zip": "^0.6.1"
+  }
 }

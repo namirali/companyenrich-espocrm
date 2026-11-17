@@ -1,0 +1,12 @@
+{
+    "titles": {
+        "CompanyEnrich": "CompanyEnrich"
+    },
+    "fields": {
+        "apiKey": "API key",
+        "clearApiKey": "Remove stored API key"
+    },
+    "help": {
+        "CompanyEnrich": "CompanyEnrich provides company and professional-profile research. Use your own API key; paid requests use your CompanyEnrich credits. The key is encrypted at rest and never returned to the browser. Leave it blank to preserve the current key. Enable CompanyEnrich access in user roles. Documentation: https://docs.companyenrich.com/reference"
+    }
+}

@@ -4,22 +4,18 @@ use Espo\Core\Container;
 use Espo\Core\InjectableFactory;
 use Espo\Core\Utils\Config;
 use Espo\Core\Utils\Config\ConfigWriter;
-use Espo\ORM\EntityManager;
 
-/**
- * Called when the extension is installed. Here you can write config parameter or create default records.
- */
 class AfterInstall
 {
-    public function run(Container $container)
+    public function run(Container $container): void
     {
-        // Use to create or read records.
-        $em = $container->getByClass(EntityManager::class);
-
-        // Use to add parameter values to the config.
-        $configWriter = $container->getByClass(InjectableFactory::class)->create(ConfigWriter::class);
-
         $config = $container->getByClass(Config::class);
+        $tabs = $config->get('tabList') ?? [];
+        if (!in_array('CompanyEnrich', $tabs, true)) {
+            $tabs[] = 'CompanyEnrich';
+            $writer = $container->getByClass(InjectableFactory::class)->create(ConfigWriter::class);
+            $writer->set('tabList', $tabs);
+            $writer->save();
+        }
     }
 }
-
